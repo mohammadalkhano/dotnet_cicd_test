@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: Development
     env:
+      environment: Env1
       env_var: ${{ vars.ENV_CONTEXT_VAR }}
       env_scret: ${{secrets.ENV_CONTEXT_SECRET}}
     steps:
