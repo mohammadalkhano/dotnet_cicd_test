@@ -13,7 +13,7 @@ on:
 
 # Setting an environment variable with the value of a configuration variable
 env:
-  name: Environment Development
+  name: Development
   env_var: ${{ vars.ENV_CONTEXT_VAR }}
   env_scret: ${{secrets.ENV_CONTEXT_SECRET}}
 jobs:
