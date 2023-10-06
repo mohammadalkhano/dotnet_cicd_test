@@ -22,13 +22,12 @@ jobs:
       - name: Variables
         run: |
           echo "ENV_VAR is = $env_var"
-          echo "Env name = $GITHUB_ENV"
 
       - uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ vars.ENV_CONTEXT_VAR }}
+          dotnet-version: ${{ vars.DOTNET_VERSION }}
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
