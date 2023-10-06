@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: build and Test
+name: build, Test create Release tags
 on:
   push:
     branches: ['master']
@@ -11,15 +11,13 @@ on:
       - '**.cs'
       - '**.csproj'
 
-# Setting an environment variable with the value of a configuration variable
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: Development
+    # Setting an environment variable with the value of a configuration variable
     env:
-      environment: Env1
       env_var: ${{ vars.ENV_CONTEXT_VAR }}
-      env_scret: ${{secrets.ENV_CONTEXT_SECRET}}
     steps:
       - name: Variables
         run: |
@@ -30,7 +28,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ secrets.MY_VERSION }}
+          dotnet-version: ${{ vars.ENV_CONTEXT_VAR }}
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
