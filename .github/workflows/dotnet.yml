@@ -19,13 +19,14 @@ jobs:
     steps:
       - name: Output vars
         run: |
+          echo "DOTNET_VERSION: ${{ secrets.MY_VERSION }}"
           echo "DOTNET_VERSION: ${{ vars.DOTNET_VERSION }}"
 
       - uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ vars.DOTNET_VERSION }}
+          dotnet-version: ${{ secrets.MY_VERSION }}
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
