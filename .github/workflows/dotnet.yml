@@ -23,8 +23,8 @@ jobs:
     steps:
       - name: Variables
         run: |
-          echo "ENV_VAR is = ${{ vars.ENV_CONTEXT_VAR }}"
-          echo "ENV_SECRET is = ${{secrets.ENV_CONTEXT_SECRET}}"
+          echo "ENV_VAR is = ${ vars.ENV_CONTEXT_VAR }"
+          echo "ENV_SECRET is = ${secrets.ENV_CONTEXT_SECRET}"
 
       - uses: actions/checkout@v3
       - name: Setup .NET
