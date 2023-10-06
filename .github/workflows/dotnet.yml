@@ -21,7 +21,8 @@ jobs:
       env_scret: ${{secrets.ENV_CONTEXT_SECRET}}
     steps:
       - name: Variables
-        run: echo "ENV_VAR is = $env_var"
+        run: |
+          echo "ENV_VAR is = $env_var"
           echo "ENV_SECRET is = $env_scret"
 
       - uses: actions/checkout@v3
