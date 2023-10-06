@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      #   - name: Output vars
-      #     run: |
-      #       echo "DOTNET_VERSION: ${{ vars.DOTNET_VERSION }}"
+      - name: Output vars
+        run: |
+          echo "DOTNET_VERSION: ${{ vars.DOTNET_VERSION }}"
 
       - uses: actions/checkout@v3
       - name: Setup .NET
