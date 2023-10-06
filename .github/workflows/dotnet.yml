@@ -2,7 +2,6 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: build and Test
-
 on:
   push:
     branches: ['master']
@@ -12,15 +11,23 @@ on:
       - '**.cs'
       - '**.csproj'
 
+# Setting an environment variable with the value of a configuration variable
+env:
+  - name: Environment Development
+    env_var: ${{ vars.ENV_CONTEXT_VAR }}
+    env_scret: ${{secrets.ENV_CONTEXT_SECRET}}
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    # using-environments:
+    #  runs-on: ubuntu-latest
+    #  environment:
+    #    name: Development
     steps:
-      - name: Output vars
+      - name: Variables
         run: |
-          echo "DOTNET_VERSION: ${{ secrets.MY_VERSION }}"
-          echo "DOTNET_VERSION: ${{ vars.DOTNET_VERSION }}"
+          echo "ENV_VAR is = ${{ env_var}}"
+          echo "ENV_SECRET is = ${{ env_scret }}"
 
       - uses: actions/checkout@v3
       - name: Setup .NET
